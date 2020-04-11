@@ -2,15 +2,15 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-// const connectDb = require('./db');
+const connectDb = require('./db');
 
 // .env config
-// require('dotenv').config({ path: './config/.env' });
+require('dotenv').config({ path: './config/.env' });
 
 // Connect DB
 const port = process.env.PORT || 5000;
-// const uriDb = process.env.ATLAS_URI;
-// connectDb(uriDb);
+const uriDb = process.env.ATLAS_URI;
+connectDb(uriDb);
 
 // Middlewares
 app.use(cors());

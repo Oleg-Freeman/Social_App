@@ -23,11 +23,11 @@ import './App.css';
 function App() {
   return (
     // <MuiThemeProvider theme={theme}>
-      // <Provider store={store}>
-        <Router>
-          {/* <Navbar/> */}
-          <div className="container">
-            {/* <Switch>
+  // <Provider store={store}>
+    <Router>
+      {/* <Navbar/> */}
+      <div className="container">
+        {/* <Switch>
 
               <Route path="/" exact component={Home} />
               <Route path="/register" exact component={Register} />
@@ -36,11 +36,11 @@ function App() {
               <Route path="/users/:userId/posts/:postId" exact component={User} />
 
             </Switch> */}
-          </div>
-        </Router>
-      // </Provider>
+      </div>
+    </Router>
+  // </Provider>
 
-    // </MuiThemeProvider>
+  // </MuiThemeProvider>
 
   );
 }
