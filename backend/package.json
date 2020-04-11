@@ -1,0 +1,30 @@
+{
+  "name": "social_back_end",
+  "version": "1.0.0",
+  "description": "Sosial app back end",
+  "repository": {
+    "url": "..."
+  },
+  "author": {
+    "name": "Oleg Voitiuk",
+    "email": "av.ssf4@gmail.com",
+    "url": "https://linkedin.com/in/olegv999"
+  },
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "bcrypt": "^3.0.8",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.5",
+    "multer": "^1.4.2"
+  }
+}
