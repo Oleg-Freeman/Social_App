@@ -20,12 +20,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
-// const commentsRouter = require('./routes/comments');
+const commentsRouter = require('./routes/comments');
 // const likesRouter = require('./routes/likes');
 
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
-// app.use('/comments', commentsRouter);
+app.use('/comments', commentsRouter);
 // app.use('/likes', likesRouter);
 
 app.use((req, res, next) => {
