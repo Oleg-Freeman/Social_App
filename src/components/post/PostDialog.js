@@ -24,7 +24,8 @@ import { getPost, clearErrors } from '../../redux/actions/dataActions';
 const styles = (theme) => ({
   // ...theme,
   profileImage: {
-    maxWidth: 200,
+    // maxWidth: 200,
+    width: 200,
     height: 200,
     borderRadius: '50%',
     objectFit: 'cover'
@@ -101,7 +102,7 @@ class PostDialog extends Component {
         commentCount,
         imageURL,
         userName,
-        userId,
+        // userId,
         comments
       },
       UI: { loading }
@@ -140,7 +141,7 @@ class PostDialog extends Component {
         </Grid>
         <hr className={classes.visibleSeparator} />
         <AddComment postId={_id} />
-        <Comments comments={comments} userId={userId} />
+        <Comments comments={comments} />
       </Grid>
     );
     return (

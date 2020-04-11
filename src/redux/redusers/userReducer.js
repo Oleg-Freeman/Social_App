@@ -11,7 +11,6 @@ const initialState = {
   authenticated: false,
   loading: false,
   credentials: {},
-  notifications: [],
   userId: 'testId'
 };
 

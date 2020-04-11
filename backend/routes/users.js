@@ -135,7 +135,7 @@ router.route('/login').post(isloggedIn, async(req, res) => {
       .exec(async(err, user) => {
         if (err) return res.status(400).json('Error: ' + err);
         else if (user === null || user.length === 0) return res.status(400).json('Wrong credentials, try again');
-        else if (user.isAuthenticated === true) return res.json({ authenticated: true });
+        else if (user.isAuthenticated === true) return res.json(user._id);
         else {
         // Match password
           await bcrypt.compare(req.body.password, user.password, async(err, isMatch) => {

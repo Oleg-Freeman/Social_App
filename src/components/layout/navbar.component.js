@@ -1,7 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import MyButton from '../../util/MyButton';
 import NewPost from '../post/AddPost';
+
+// Redux Stuff
+import { connect } from 'react-redux';
 
 // MUI stuff
 import AppBar from '@material-ui/core/AppBar';
@@ -10,14 +14,12 @@ import Button from '@material-ui/core/Button';
 // Icons
 import HomeIcon from '@material-ui/icons/Home';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   render() {
-    const isAuthenticated = window.localStorage.getItem('token');
-
     return (
       <AppBar position="fixed">
         <Toolbar className="nav-container">
-          {isAuthenticated ? (
+          {window.localStorage.getItem('token') ? (
             <Fragment>
               <NewPost />
               <Link to="/">
@@ -39,3 +41,13 @@ export default class Navbar extends Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  user: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(Navbar);

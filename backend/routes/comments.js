@@ -107,7 +107,9 @@ router.route('/:commentId').delete(ensureAuthenticated, async(req, res) => {
                 else {
                   post.commentCount = --post.commentCount;
                   post.comments.splice(toDelete, 1);
-                  await post.save();
+                  await post.save(() => {
+                    res.json('Comment deleted');
+                  });
                 }
               }
             });

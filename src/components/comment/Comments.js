@@ -26,12 +26,12 @@ const styles = (theme) => ({
 class Comments extends Component {
   render() {
     const isAuthenticated = window.localStorage.getItem('token');
-    const { comments, classes, userId } = this.props;
+    const { comments, classes } = this.props;
 
     return (
       <Grid container>
         {comments.map((comment, index) => {
-          const { body, createdAt, imageURL, userName, _id, likeCount, postId } = comment;
+          const { body, createdAt, imageURL, userName, _id, likeCount, postId, userId } = comment;
           return (
             <Fragment key={createdAt}>
               <Grid item sm={12}>
@@ -81,9 +81,9 @@ class Comments extends Component {
 
 Comments.propTypes = {
   comments: PropTypes.array.isRequired,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
   // postId: PropTypes.string.isRequired,
-  userId: PropTypes.string.isRequired
+  // userId: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Comments);
