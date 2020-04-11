@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 
 import Post from '../components/post/post.component';
-// import Profile from '../components/profile/profile.component';
+import Profile from '../components/profile/profile.component';
 
 import { connect } from 'react-redux';
 import { getPosts } from '../redux/actions/dataActions';
@@ -25,8 +25,7 @@ class Home extends Component {
           {recentScreamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          {/* <Profile history={this.props.history}/> */}
-          <div>Profile</div>
+          <Profile history={this.props.history}/>
         </Grid>
       </Grid>
     );
