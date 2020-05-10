@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDb = require('./db');
+const path = require('path');
 
 // .env config
 require('dotenv').config({ path: './config/.env' });
@@ -37,6 +38,14 @@ app.use((err, req, res, next) => {
     res.status(500).json('Internal server error');
   }
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html')); // relative path
+  });
+}
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

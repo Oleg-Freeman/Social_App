@@ -22,12 +22,14 @@ class User extends Component {
   componentDidMount() {
     const userId = this.props.match.params.userId;
     const postId = this.props.match.params.postId;
+    const baseURL = 'https://floating-eyrie-36313.herokuapp.com/';
+    // http://localhost:5000/
 
     if (postId) this.setState({ postIdParam: postId });
 
     this.props.getUserData(userId);
     axios
-      .get(`http://localhost:5000/users/${userId.replace(/['"]+/g, '')}`)
+      .get(`${baseURL}users/${userId.replace(/['"]+/g, '')}`)
       .then((res) => {
         this.setState({
           profile: res.data

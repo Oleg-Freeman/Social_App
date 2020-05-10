@@ -8,10 +8,12 @@ import {
   GET_USER_NOTIFICATIONS
 } from '../types';
 import axios from 'axios';
+const baseURL = 'https://floating-eyrie-36313.herokuapp.com/';
+// http://localhost:5000/
 
 export const loginUser = (userData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
-  axios.post('http://localhost:5000/users/login', userData)
+  axios.post(`${baseURL}users/login`, userData)
     .then(res => {
       if (res.data.authenticated) {
         dispatch({ type: CLEAR_ERRORS });
@@ -38,7 +40,7 @@ export const loginUser = (userData, history) => (dispatch) => {
 
 export const registerUser = (newUserData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
-  axios.post('http://localhost:5000/users/register', newUserData)
+  axios.post(`${baseURL}users/register`, newUserData)
     .then((res) => {
       dispatch({ type: CLEAR_ERRORS });
       history.push('/login');
@@ -53,7 +55,7 @@ export const registerUser = (newUserData, history) => (dispatch) => {
 
 export const logoutUser = (history) => () => {
   const token = window.localStorage.getItem('token');
-  axios.get(`http://localhost:5000/users/logout/${token.replace(/['"]+/g, '')}`)
+  axios.get(`${baseURL}users/logout/${token.replace(/['"]+/g, '')}`)
     .then(res => {
       console.log(res.data);
       if (res.data.notAuthenticated) {
@@ -77,7 +79,7 @@ export const getUserData = (userId) => (dispatch) => {
   dispatch({ type: LOADING_USER });
   if (userId) {
     axios
-      .get(`http://localhost:5000/users/${userId.replace(/['"]+/g, '')}`)
+      .get(`${baseURL}users/${userId.replace(/['"]+/g, '')}`)
       .then((res) => {
         dispatch({
           type: SET_USER,
@@ -99,7 +101,7 @@ export const uploadImage = (formData) => (dispatch) => {
   const token = window.localStorage.getItem('token');
   axios({
     method: 'post',
-    url: 'http://localhost:5000/users/image',
+    url: `${baseURL}users/image`,
     data: formData,
     headers: { token: token.replace(/['"]+/g, '') }
   })
@@ -114,7 +116,7 @@ export const editUserDetails = (userDetails) => (dispatch) => {
   const userId = window.localStorage.getItem('token');
   axios({
     method: 'post',
-    url: `http://localhost:5000/users/update/${userId.replace(/['"]+/g, '')}`,
+    url: `${baseURL}users/update/${userId.replace(/['"]+/g, '')}`,
     data: userDetails,
     headers: { token: userId.replace(/['"]+/g, '') }
   })
@@ -133,7 +135,7 @@ export const markNotificationsRead = (notificationIds) => (dispatch) => {
   const token = window.localStorage.getItem('token');
   axios({
     method: 'post',
-    url: 'http://localhost:5000/notifications',
+    url: `${baseURL}notifications`,
     data: notificationIds,
     headers: { token: token.replace(/['"]+/g, '') }
   })
@@ -150,7 +152,7 @@ export const getUserNotifications = (userId) => (dispatch) => {
   const token = window.localStorage.getItem('token');
   axios({
     method: 'get',
-    url: `http://localhost:5000/notifications/${userId}`,
+    url: `${baseURL}notifications/${userId}`,
     headers: { token: token.replace(/['"]+/g, '') }
   })
     .then((res) => {

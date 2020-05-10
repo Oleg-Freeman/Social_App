@@ -2,9 +2,13 @@
   "name": "social_app",
   "version": "0.1.0",
   "description": "Social network prototype",
+  "engines": {
+    "node": "12.12.0",
+    "npm": "6.11.3"
+  },
   "repository": {
     "type": "svn",
-    "url": "..."
+    "url": "https://github.com/Oleg-Freeman/Social_App"
   },
   "author": {
     "name": "Oleg Voitiuk",
@@ -19,6 +23,7 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.1",
+    "concurrently": "^5.2.0",
     "dayjs": "^1.8.21",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -32,10 +37,13 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"node backend/server.js\"",
+    "client": "react-scripts start",
+    "server": "node backend/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm install && npm run build && cd backend && npm install"
   },
   "browserslist": {
     "production": [

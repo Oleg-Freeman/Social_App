@@ -22,7 +22,7 @@ const userSchema = new Schema({
   imageURL: {
     type: String,
     required: true,
-    default: 'https://res.cloudinary.com/freeman999/image/upload/v1581953970/noAvatar_whj5rm.png'
+    default: 'https://res.cloudinary.com/freeman999/image/upload/v1589014461/noAvatar2_skj96w.png'
   },
   bio: { type: String },
   website: { type: String },
